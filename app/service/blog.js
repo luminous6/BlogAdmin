@@ -8,7 +8,17 @@ class BlogService extends Service {
     const res = await this.app.mysql.select('blog');
     return res;
   }
-
+  // 添加博客
+  async insertBlog(data) {
+    const insertData = {
+      title: data.title,
+      content: data.content,
+      tags: data.tags,
+      pushtime: data.pushtime,
+    };
+    const res = await this.app.mysql.insert('blog', insertData);
+    return res;
+  }
 
 }
 

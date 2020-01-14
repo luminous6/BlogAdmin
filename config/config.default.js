@@ -21,7 +21,11 @@ module.exports = appInfo => {
       database: 'db_blogmanagement',
     },
   };
-
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1576551934669_8298';
 
