@@ -8,8 +8,6 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/queryStudent', controller.home.queryStudent);
 
-  router.get('/queryBlogById', controller.comment.queryBlogById);
-
   // 每日一句模块
   router.get('/queryAllSentence', controller.dailySentence.queryAllSentence);
   router.get('/addSentence', controller.dailySentence.addSentence);
@@ -19,4 +17,9 @@ module.exports = app => {
   // blog 模块
   router.get('/queryAllBlog', controller.blog.queryAllBlog);
   router.post('/addBlog', controller.blog.addBlog);
+
+  // 评论模块
+  router.get('/queryComment', controller.comment.queryCommentByBlogId);
+  router.post('/addComment', controller.comment.insertComment);
+  router.get('/delComment', controller.comment.delCommentById);
 };
