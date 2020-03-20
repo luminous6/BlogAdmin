@@ -25,6 +25,34 @@ class BlogController extends Controller {
       failedmsg: '添加失败',
     });
   }
+  // 删除博客
+  async delBlogById() {
+    const { ctx } = this;
+    const { id } = ctx.query;
+    const res = await ctx.service.blog.delBlog(id);
+    ctx.body = returnValue(res, {
+      status: 200,
+      successmsg: '删除成功',
+      failedmsg: '删除失败',
+    });
+  }
+  // 修改博客
+  async updateBlog() {
+    const { ctx } = this;
+    const params = ctx.request.body;
+    const data = {
+      id: params.id,
+      title: params.title,
+      content: params.content,
+      tags: params.tags,
+    };
+    const res = await ctx.service.blog.updateBlog(data);
+    ctx.body = returnValue(res, {
+      status: 200,
+      successmsg: '修改成功',
+      failedmsg: '修改失败',
+    });
+  }
 
 }
 

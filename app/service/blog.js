@@ -19,7 +19,23 @@ class BlogService extends Service {
     const res = await this.app.mysql.insert('blog', insertData);
     return res;
   }
-
+  // 删除博客
+  async delBlog(id) {
+    const res = await this.app.mysql.delete('blog', { id });
+    return res;
+  }
+  // 更新博客
+  async updateBlog(data) {
+    const updateData = {
+      id: data.id,
+      content: data.content,
+      updatetime: Date.now().toString(),
+      tags: data.tags,
+      title: data.title,
+    };
+    const res = await this.app.mysql.update('blog', updateData);
+    return res;
+  }
 }
 
 module.exports = BlogService;

@@ -17,6 +17,8 @@ module.exports = app => {
   // blog 模块
   router.get('/queryAllBlog', controller.blog.queryAllBlog);
   router.post('/addBlog', controller.blog.addBlog);
+  router.get('/delBlogById', controller.blog.delBlogById);
+  router.post('/updateBlog', controller.blog.updateBlog);
 
   // 评论模块
   router.get('/queryComment', controller.comment.queryCommentByBlogId);
