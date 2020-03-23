@@ -8,6 +8,18 @@ class BlogService extends Service {
     const res = await this.app.mysql.select('blog');
     return res;
   }
+  // 查询博客详情
+  async queryBlogDetail(id) {
+    const res = await this.app.mysql.get('blog', {
+      id,
+    });
+    // 查询博客评论
+    const comment = await this.app.mysql.select('comment', {
+      where: { blog_id: id },
+    });
+    res.commemt = comment;
+    return res;
+  }
   // 添加博客
   async insertBlog(data) {
     const insertData = {

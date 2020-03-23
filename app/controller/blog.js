@@ -8,6 +8,14 @@ class BlogController extends Controller {
     const res = await ctx.service.blog.queryAllBlog();
     ctx.body = writeResponse(200, '查询成功', res);
   }
+  // 查询博客详情
+  async queryBlogDetailById() {
+    const { ctx } = this;
+    const { id } = ctx.query;
+    const res = await ctx.service.blog.queryBlogDetail(id);
+    ctx.body = writeResponse(200, '请求成功', res);
+
+  }
   // 添加博客
   async addBlog() {
     const { ctx } = this;

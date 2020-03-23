@@ -7,17 +7,10 @@ class HomeController extends Controller {
     const { ctx } = this;
     ctx.body = {
       status: 200,
-      data: [ 1, 2 ],
+      data: 'hail hydra',
     };
   }
-  async queryStudent() {
-    const { ctx } = this;
-    ctx.body = {
-      status: 200,
-      message: '查询成功',
-      data: [ 1, 2 ],
-    };
-  }
+
 }
 
 module.exports = HomeController;
