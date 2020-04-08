@@ -14,7 +14,7 @@ const returnValue = (sqlState, data) => {
   if (success) {
     return writeResponse(data.status, data.successmsg, 'null');
   }
-  return writeResponse(data.status, data.failedmsg, 'null');
+  return writeResponse(202, data.failedmsg, 'null');
 
 
 };
