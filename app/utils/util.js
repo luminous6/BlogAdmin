@@ -15,8 +15,22 @@ const returnValue = (sqlState, data) => {
     return writeResponse(data.status, data.successmsg, 'null');
   }
   return writeResponse(202, data.failedmsg, 'null');
-
-
 };
 
-module.exports = { writeResponse, returnValue };
+// 时间戳返回时间
+const transformTime = time => {
+  const date = new Date(Number(time));
+  const formattedDate =
+    date.getFullYear() +
+    '-' +
+    ('0' + (date.getMonth() + 1)).slice(-2) +
+    '-' +
+    ('0' + date.getDate()).slice(-2) +
+    ' ' +
+    ('0' + date.getHours()).slice(-2) +
+    ':' +
+    ('0' + date.getMinutes()).slice(-2);
+  return formattedDate;
+};
+
+module.exports = { writeResponse, returnValue, transformTime };

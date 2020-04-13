@@ -1,11 +1,15 @@
 'use strict';
 const Controller = require('egg').Controller;
-const { writeResponse, returnValue } = require('../utils/util');
+const { writeResponse, returnValue, transformTime } = require('../utils/util');
 class BlogController extends Controller {
   // 查询所有博客
   async queryAllBlog() {
     const { ctx } = this;
     const res = await ctx.service.blog.queryAllBlog();
+    res.forEach(item => {
+      item.pushtime = transformTime(item.pushtime);
+      item.tags = item.tags.split('，');
+    });
     ctx.body = writeResponse(200, '查询成功', res);
   }
   // 查询博客详情

@@ -1,11 +1,14 @@
 'use strict';
 const Controller = require('egg').Controller;
-const { writeResponse } = require('../utils/util');
+const { writeResponse, transformTime } = require('../utils/util');
 class DailySentenceController extends Controller {
   // 查询全部句子
   async queryAllSentence() {
     const { ctx } = this;
     const res = await ctx.service.dailySentence.queryAllSentence();
+    res.forEach(item => {
+      item.pushtime = transformTime(item.pushtime);
+    });
     // 判断成功
     ctx.body = writeResponse(200, '查询成功', res);
   }
