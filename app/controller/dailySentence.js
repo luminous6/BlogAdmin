@@ -8,6 +8,7 @@ class DailySentenceController extends Controller {
     const res = await ctx.service.dailySentence.queryAllSentence();
     res.forEach(item => {
       item.pushtime = transformTime(item.pushtime);
+      item.updatetime = item.updatetime && transformTime(item.pushtime);
     });
     // 判断成功
     ctx.body = writeResponse(200, '查询成功', res);

@@ -8,6 +8,7 @@ class BlogController extends Controller {
     const res = await ctx.service.blog.queryAllBlog();
     res.forEach(item => {
       item.pushtime = transformTime(item.pushtime);
+      item.updatetime = item.updatetime ? transformTime(item.updatetime) : null;
       item.tags = item.tags.split('，');
     });
     ctx.body = writeResponse(200, '查询成功', res);
