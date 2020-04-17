@@ -1,11 +1,11 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
-
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
 module.exports = appInfo => {
+
   /**
    * built-in config
    * @type {Egg.EggAppConfig}
@@ -19,6 +19,8 @@ module.exports = appInfo => {
       user: 'root',
       password: '1234',
       database: 'db_blogmanagement',
+      // password: 'xm.123',
+      // database: 'blog',
     },
   };
   config.security = {
@@ -30,8 +32,16 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1576551934669_8298';
 
   // add your middleware config here
-  config.middleware = [];
-
+  config.middleware = [
+  ];
+  config.cors = {
+    origin: '*',
+    // credentials: true, // 允许Cook可以跨域
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+  // config.setAccessControlAllow = {
+  //   whiteList: [ '*' ],
+  // };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
