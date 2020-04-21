@@ -43,6 +43,9 @@ module.exports = appInfo => {
   //   whiteList: [ '*' ],
   // };
   // add your user config here
+  config.jwt = {
+    secret: '123456',
+  };
   const userConfig = {
     // myAppName: 'egg',
   };
