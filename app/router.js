@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.post('/login', controller.home.index);
+  router.post('/login', controller.login.index);
 
   // 每日一句模块
   router.get('/queryAllSentence', app.jwt, controller.dailySentence.queryAllSentence);

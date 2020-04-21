@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class HomeController extends Controller {
+class LoginController extends Controller {
   async index() {
     const { ctx, app } = this;
     const data = ctx.request.body;
@@ -32,4 +32,4 @@ class HomeController extends Controller {
   }
 }
 
-module.exports = HomeController;
+module.exports = LoginController;
