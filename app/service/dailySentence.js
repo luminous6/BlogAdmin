@@ -5,14 +5,17 @@ const Service = require('egg').Service;
 class DailySentenceService extends Service {
   // 查询全部
   async queryAllSentence() {
-    const res = await this.app.mysql.select('daily_sentence');
+    const res = await this.app.mysql.select('daily_sentence', {
+      // 搜索 post 表
+      orders: [[ 'id', 'desc' ]], // 排序方式
+    });
     return res;
   }
   // 查询最近添加的一条
   async queryLatelySentence() {
     const res = await this.app.mysql.select('daily_sentence', {
       // 搜索 post 表
-      orders: [[ 'id' ]], // 排序方式
+      orders: [[ 'id', 'desc' ]], // 排序方式
       limit: 1,
     });
     return res;
