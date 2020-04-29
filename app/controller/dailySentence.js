@@ -13,6 +13,17 @@ class DailySentenceController extends Controller {
     // 判断成功
     ctx.body = writeResponse(200, '查询成功', res);
   }
+  // 查询最近添加的一条
+  async queryLatelySentence() {
+    const { ctx } = this;
+    const res = await ctx.service.dailySentence.queryLatelySentence();
+    res.forEach(item => {
+      item.pushtime = transformTime(item.pushtime);
+      item.updatetime = item.updatetime && transformTime(item.pushtime);
+    });
+    // 判断成功
+    ctx.body = writeResponse(200, '查询成功', res);
+  }
   // 删除句子 by id
   async delSentenceById() {
     const { ctx } = this;

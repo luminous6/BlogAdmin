@@ -13,6 +13,7 @@ class LoginController extends Controller {
         {
           username: data.username, // 需要存储的 token 数据
           password: data.password,
+          // exp: 1000 * 60 * 60 * 2,
         },
         app.config.jwt.secret
       );

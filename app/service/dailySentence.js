@@ -8,6 +8,15 @@ class DailySentenceService extends Service {
     const res = await this.app.mysql.select('daily_sentence');
     return res;
   }
+  // 查询最近添加的一条
+  async queryLatelySentence() {
+    const res = await this.app.mysql.select('daily_sentence', {
+      // 搜索 post 表
+      orders: [[ 'id' ]], // 排序方式
+      limit: 1,
+    });
+    return res;
+  }
   // 删除句子 by id
   async delSentenceById(id) {
     const res = this.app.mysql.delete('daily_sentence', { id });

@@ -5,7 +5,13 @@ const Service = require('egg').Service;
 class BlogService extends Service {
   // 查询所有博客
   async queryAllBlog() {
-    const res = await this.app.mysql.select('blog');
+    const res = await this.app.mysql.select('blog', {
+      // 搜索 post 表
+      orders: [
+        [ 'id', 'desc' ],
+      ], // 排序方式
+
+    });
     return res;
   }
   // 查询博客详情

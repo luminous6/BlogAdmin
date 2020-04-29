@@ -20,6 +20,11 @@ module.exports = app => {
     app.jwt,
     controller.dailySentence.delSentenceById
   );
+  router.get(
+    '/queryLatelySentence',
+    app.jwt,
+    controller.dailySentence.queryLatelySentence
+  );
 
   // blog 模块
   router.get('/queryAllBlog', app.jwt, controller.blog.queryAllBlog);
